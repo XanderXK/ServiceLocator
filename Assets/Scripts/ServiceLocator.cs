@@ -6,7 +6,7 @@ public static class ServiceLocator
 {
     private static readonly Dictionary<Type, object> _singletonServices = new();
     private static readonly Dictionary<Type, object> _scopedServices = new();
-    private static readonly Dictionary<Type, object> _transientServices = new();
+    private static readonly Dictionary<Type, Func<object>> _transientServices = new();
 
     public static void RegisterSingleton<T>(T service) where T : class
     {
