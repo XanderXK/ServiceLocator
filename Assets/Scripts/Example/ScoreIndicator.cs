@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ScoreIndicator
+public class ScoreIndicator : IIndicator
 {
-    public void ShowScore(int score)
+    public void Show(int value)
     {
-        Debug.Log("Current Score: " + score);
+        Debug.Log($"Current Score: {value}");
     }
 }

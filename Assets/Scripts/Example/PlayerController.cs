@@ -7,13 +7,13 @@ public class PlayerController : MonoBehaviour
 
     private IInput _input;
     private ScoreCounter _scoreCounter;
-    private ScoreIndicator _scoreIndicator;
+    private IIndicator _scoreIndicator;
 
     private void Awake()
     {
         _input = ServiceLocator.Get<IInput>();
         _scoreCounter = ServiceLocator.Get<ScoreCounter>();
-        _scoreIndicator = ServiceLocator.Get<ScoreIndicator>();
+        _scoreIndicator = ServiceLocator.Get<IIndicator>();
     }
 
     private void Update()
@@ -26,7 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             _scoreCounter.AddScore();
             var currentScore = _scoreCounter.CurrentScore;
-            _scoreIndicator.ShowScore(currentScore);
+            _scoreIndicator.Show(currentScore);
             
             if (_scoreCounter.IsWin)
             {

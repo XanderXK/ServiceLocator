@@ -17,6 +17,6 @@ public class Boot : MonoBehaviour
         var inputService = new KeyInput();
         ServiceLocator.RegisterSingleton<IInput>(inputService);
 
-        ServiceLocator.RegisterTransient<ScoreIndicator>(() => new ScoreIndicator());
+        ServiceLocator.RegisterTransient<IIndicator>(() => new ScoreIndicator());
     }
 }
