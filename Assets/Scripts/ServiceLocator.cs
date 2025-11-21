@@ -12,6 +12,11 @@ public static class ServiceLocator
     {
         var type = typeof(T);
         if (IsRegistered(type)) return;
+        if (service is MonoBehaviour monoBehaviour)
+        {
+            UnityEngine.Object.DontDestroyOnLoad(monoBehaviour.gameObject);
+        }
+
         _singletonServices[type] = service;
     }
 
@@ -51,7 +56,7 @@ public static class ServiceLocator
         Debug.LogError($"Service of type {type} is not registered");
         return null;
     }
-    
+
     public static void ClearScopedServices()
     {
         _scopedServices.Clear();
